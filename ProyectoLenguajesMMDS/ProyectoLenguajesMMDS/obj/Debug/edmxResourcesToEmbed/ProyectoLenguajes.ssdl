@@ -1,0 +1,788 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Proyecto_Lenguajes_DMMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="Answer_id" />
+    </Key>
+    <Property Name="Answer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Query_id" Type="int" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="8" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Person_id" Type="int" />
+    <Property Name="Course_id" Type="int" />
+    <Property Name="Created_by" Type="int" />
+    <Property Name="Create_at" Type="date" />
+    <Property Name="Updated_by" Type="int" />
+    <Property Name="Updated_at" Type="date" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Appointment_id" />
+    </Key>
+    <Property Name="Appointment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Professor_course_id" Type="int" Nullable="false" />
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Start_hour" Type="varchar" MaxLength="10" />
+    <Property Name="End_hour" Type="varchar" MaxLength="10" />
+    <Property Name="Day" Type="varchar" MaxLength="10" />
+    <Property Name="Created_by" Type="int" />
+    <Property Name="Create_at" Type="date" />
+    <Property Name="Updated_by" Type="int" />
+    <Property Name="Updated_at" Type="date" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Canton">
+    <Key>
+      <PropertyRef Name="Province_id" />
+      <PropertyRef Name="Canton_id" />
+    </Key>
+    <Property Name="Province_id" Type="int" Nullable="false" />
+    <Property Name="Canton_id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Course_id" />
+    </Key>
+    <Property Name="Course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Credits" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Term" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Distric">
+    <Key>
+      <PropertyRef Name="Province_id" />
+      <PropertyRef Name="Canton_id" />
+      <PropertyRef Name="Distric_id" />
+    </Key>
+    <Property Name="Province_id" Type="int" Nullable="false" />
+    <Property Name="Canton_id" Type="int" Nullable="false" />
+    <Property Name="Distric_id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Office_Hours">
+    <Key>
+      <PropertyRef Name="Office_hours_id" />
+    </Key>
+    <Property Name="Office_hours_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="10" />
+    <Property Name="Start_hour" Type="varchar" MaxLength="10" />
+    <Property Name="End_hour" Type="varchar" MaxLength="10" />
+    <Property Name="Professor_course_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Person_id" />
+    </Key>
+    <Property Name="Person_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Last_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Interests" Type="nvarchar" MaxLength="200" />
+    <Property Name="Profile_pic" Type="image" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Distric_id" Type="int" />
+    <Property Name="Canton_id" Type="int" />
+    <Property Name="Province_id" Type="int" />
+    <Property Name="Created_by" Type="int" />
+    <Property Name="Create_at" Type="date" />
+    <Property Name="Updated_by" Type="int" />
+    <Property Name="Updated_at" Type="date" />
+    <Property Name="Role" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Person_Social_Network">
+    <Key>
+      <PropertyRef Name="Social_network_id" />
+      <PropertyRef Name="Person_id" />
+    </Key>
+    <Property Name="Social_network_id" Type="int" Nullable="false" />
+    <Property Name="Person_id" Type="int" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="Professor_id" />
+    </Key>
+    <Property Name="Professor_id" Type="int" Nullable="false" />
+    <Property Name="Especiality" Type="nvarchar" MaxLength="200" />
+    <Property Name="Is_admin" Type="bit" />
+  </EntityType>
+  <EntityType Name="Professor_Course">
+    <Key>
+      <PropertyRef Name="Professor_course_id" />
+    </Key>
+    <Property Name="Professor_course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Course_id" Type="int" Nullable="false" />
+    <Property Name="Professor_id" Type="int" Nullable="false" />
+    <Property Name="Created_by" Type="int" />
+    <Property Name="Create_at" Type="date" />
+    <Property Name="Updated_by" Type="int" />
+    <Property Name="Updated_at" Type="date" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Province_id" />
+    </Key>
+    <Property Name="Province_id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="Query_id" />
+    </Key>
+    <Property Name="Query_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Query" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="8" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Person_id" Type="int" />
+    <Property Name="Course_id" Type="int" />
+    <Property Name="Created_by" Type="int" />
+    <Property Name="Create_at" Type="date" />
+    <Property Name="Updated_by" Type="int" />
+    <Property Name="Updated_at" Type="date" />
+  </EntityType>
+  <EntityType Name="Social_Network">
+    <Key>
+      <PropertyRef Name="Social_network_id" />
+    </Key>
+    <Property Name="Social_network_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="carne" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Is_President" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Appointme__Creat__5BE2A6F2">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Profe__5DCAEF64">
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor_Course">
+        <PropertyRef Name="Professor_course_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Professor_course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Stude__5EBF139D">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Student_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Updat__5CD6CB2B">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Canton__Province__25869641">
+    <End Role="Province" Type="Self.Province" Multiplicity="1" />
+    <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Province_id" />
+      </Principal>
+      <Dependent Role="Canton">
+        <PropertyRef Name="Province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Distric__286302EC">
+    <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+    <End Role="Distric" Type="Self.Distric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canton">
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Principal>
+      <Dependent Role="Distric">
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Cours__5812160E">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Creat__5629CD9C">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Profe__59063A47">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="Professor_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Professor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Updat__571DF1D5">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Created_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Query">
+    <End Role="Query" Type="Self.Query" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Query">
+        <PropertyRef Name="Query_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Query_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Updated_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Created_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Person1" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Person1">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Distric">
+    <End Role="Distric" Type="Self.Distric" Multiplicity="0..1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distric">
+        <PropertyRef Name="Distric_id" />
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Distric_id" />
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Professor_Course">
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="0..1" />
+    <End Role="Office_Hours" Type="Self.Office_Hours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor_Course">
+        <PropertyRef Name="Professor_course_id" />
+      </Principal>
+      <Dependent Role="Office_Hours">
+        <PropertyRef Name="Professor_course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Professor_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="Professor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSN_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person_Social_Network" Type="Self.Person_Social_Network" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Person_Social_Network">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSN_Soccial_Network">
+    <End Role="Social_Network" Type="Self.Social_Network" Multiplicity="1" />
+    <End Role="Person_Social_Network" Type="Self.Person_Social_Network" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Social_Network">
+        <PropertyRef Name="Social_network_id" />
+      </Principal>
+      <Dependent Role="Person_Social_Network">
+        <PropertyRef Name="Social_network_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Created_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Updated_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Updated_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Person1" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Person1">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Accept_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Appointment_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Accept_Student_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Student_id" Type="int" Mode="In" />
+    <Parameter Name="Update_by" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Create_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+    <Parameter Name="Student_id" Type="int" Mode="In" />
+    <Parameter Name="Start_hour" Type="varchar" Mode="In" />
+    <Parameter Name="End_hour" Type="varchar" Mode="In" />
+    <Parameter Name="Day" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Delete_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Appointment_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Delete_Course" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Delete_Office_Hours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Office_hours_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeletePersonSocialNetwork" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Social_network_id" Type="int" Mode="In" />
+    <Parameter Name="Person_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteSocialNetwork" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Social_network_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Desactivate_Person_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Person_id" Type="int" Mode="In" />
+    <Parameter Name="Update_by" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_Canton_By_Province" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Province_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_District_By_Province_Canton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Province_Id" Type="int" Mode="In" />
+    <Parameter Name="Canton_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_Professor_By_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_Professors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Professors_Off" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Province" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Students" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Students_By_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Get_Students_Off" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Insert_Course" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Credits" Type="int" Mode="In" />
+    <Parameter Name="Code" Type="varchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Term" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Insert_Office_Hours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start_Hour" Type="varchar" Mode="In" />
+    <Parameter Name="End_Hour" Type="varchar" Mode="In" />
+    <Parameter Name="Day" Type="varchar" Mode="In" />
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Insert_Update_Professor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Person_id" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Last_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Interests" Type="nvarchar" Mode="In" />
+    <Parameter Name="Profile_pic" Type="image" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+    <Parameter Name="Distric_id" Type="int" Mode="In" />
+    <Parameter Name="Canton_id" Type="int" Mode="In" />
+    <Parameter Name="Province_id" Type="int" Mode="In" />
+    <Parameter Name="Created_by" Type="int" Mode="In" />
+    <Parameter Name="Create_at" Type="date" Mode="In" />
+    <Parameter Name="Updated_by" Type="int" Mode="In" />
+    <Parameter Name="Updated_at" Type="date" Mode="In" />
+    <Parameter Name="Role" Type="varchar" Mode="In" />
+    <Parameter Name="Especiality" Type="varchar" Mode="In" />
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Insert_Update_Professor_To_Course" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+    <Parameter Name="Professor_id" Type="int" Mode="In" />
+    <Parameter Name="Course_id" Type="int" Mode="In" />
+    <Parameter Name="Created_by" Type="int" Mode="In" />
+    <Parameter Name="Updated_by" Type="int" Mode="In" />
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Insert_Update_Student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Person_id" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Last_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Interests" Type="nvarchar" Mode="In" />
+    <Parameter Name="Profile_pic" Type="image" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+    <Parameter Name="Distric_id" Type="int" Mode="In" />
+    <Parameter Name="Canton_id" Type="int" Mode="In" />
+    <Parameter Name="Province_id" Type="int" Mode="In" />
+    <Parameter Name="Created_by" Type="int" Mode="In" />
+    <Parameter Name="Create_at" Type="date" Mode="In" />
+    <Parameter Name="Updated_by" Type="int" Mode="In" />
+    <Parameter Name="Updated_at" Type="date" Mode="In" />
+    <Parameter Name="Role" Type="varchar" Mode="In" />
+    <Parameter Name="Carne" Type="varchar" Mode="In" />
+    <Parameter Name="Action" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertPersonSocialNetwork" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Person_id" Type="int" Mode="In" />
+    <Parameter Name="Social_network_id" Type="int" Mode="In" />
+    <Parameter Name="URL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertSocialNetwork" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Promote_Professor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_id" Type="int" Mode="In" />
+    <Parameter Name="Update_by" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Promote_Student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Student_id" Type="int" Mode="In" />
+    <Parameter Name="Update_by" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Reactivate_Person_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Person_id" Type="int" Mode="In" />
+    <Parameter Name="Update_by" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Refuse_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Appointment_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_All_Accepted_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_All_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_All_Course_From_Professor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_All_Hold_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_Course" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Select_Course_By_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_Office_Hours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Select_Office_Hours_By_Course" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_Office_Hours_By_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Office_hours_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_Professors_By_Course" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Course_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Update_Appointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+    <Parameter Name="Person_id" Type="int" Mode="In" />
+    <Parameter Name="Start_hour" Type="varchar" Mode="In" />
+    <Parameter Name="End_hour" Type="varchar" Mode="In" />
+    <Parameter Name="Day" Type="varchar" Mode="In" />
+    <Parameter Name="Status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Update_Course" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Course_id" Type="int" Mode="In" />
+    <Parameter Name="Credits" Type="int" Mode="In" />
+    <Parameter Name="Code" Type="varchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Term" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Update_Office_Hours" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Office_hours_id" Type="int" Mode="In" />
+    <Parameter Name="Start_Hour" Type="varchar" Mode="In" />
+    <Parameter Name="End_Hour" Type="varchar" Mode="In" />
+    <Parameter Name="Day" Type="varchar" Mode="In" />
+    <Parameter Name="Professor_course_id" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="Proyecto_Lenguajes_DMMSModelStoreContainer">
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distric" EntityType="Self.Distric" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Office_Hours" EntityType="Self.Office_Hours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person_Social_Network" EntityType="Self.Person_Social_Network" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Professor" EntityType="Self.Professor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Professor_Course" EntityType="Self.Professor_Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Query" EntityType="Self.Query" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Social_Network" EntityType="Self.Social_Network" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Appointme__Creat__5BE2A6F2" Association="Self.FK__Appointme__Creat__5BE2A6F2">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Profe__5DCAEF64" Association="Self.FK__Appointme__Profe__5DCAEF64">
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Stude__5EBF139D" Association="Self.FK__Appointme__Stude__5EBF139D">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Updat__5CD6CB2B" Association="Self.FK__Appointme__Updat__5CD6CB2B">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Canton__Province__25869641" Association="Self.FK__Canton__Province__25869641">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Canton" EntitySet="Canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Distric__286302EC" Association="Self.FK__Distric__286302EC">
+      <End Role="Canton" EntitySet="Canton" />
+      <End Role="Distric" EntitySet="Distric" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Cours__5812160E" Association="Self.FK__Professor__Cours__5812160E">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Creat__5629CD9C" Association="Self.FK__Professor__Creat__5629CD9C">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Profe__59063A47" Association="Self.FK__Professor__Profe__59063A47">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Updat__571DF1D5" Association="Self.FK__Professor__Updat__571DF1D5">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Created_by" Association="Self.FK_Answer_Created_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Person" Association="Self.FK_Answer_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Query" Association="Self.FK_Answer_Query">
+      <End Role="Query" EntitySet="Query" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Updated_by" Association="Self.FK_Answer_Updated_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Created_by" Association="Self.FK_Created_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Person1" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Distric" Association="Self.FK_Distric">
+      <End Role="Distric" EntitySet="Distric" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Professor_Course" Association="Self.FK_Professor_Course">
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+      <End Role="Office_Hours" EntitySet="Office_Hours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Professor_Person" Association="Self.FK_Professor_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSN_Person" Association="Self.FK_PSN_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Person_Social_Network" EntitySet="Person_Social_Network" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSN_Soccial_Network" Association="Self.FK_PSN_Soccial_Network">
+      <End Role="Social_Network" EntitySet="Social_Network" />
+      <End Role="Person_Social_Network" EntitySet="Person_Social_Network" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Course" Association="Self.FK_Query_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Created_by" Association="Self.FK_Query_Created_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Person" Association="Self.FK_Query_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Updated_by" Association="Self.FK_Query_Updated_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Updated_by" Association="Self.FK_Updated_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Person1" EntitySet="Person" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

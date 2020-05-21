@@ -1,0 +1,1105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Proyecto_Lenguajes_DMMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="Answer_id" />
+    </Key>
+    <Property Name="Answer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Query_id" Type="Int32" />
+    <Property Name="Answer1" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Person_id" Type="Int32" />
+    <Property Name="Course_id" Type="Int32" />
+    <Property Name="Created_by" Type="Int32" />
+    <Property Name="Create_at" Type="DateTime" Precision="0" />
+    <Property Name="Updated_by" Type="Int32" />
+    <Property Name="Updated_at" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Answer_Created_by" FromRole="Answer" ToRole="Person" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK_Answer_Person" FromRole="Answer" ToRole="Person" />
+    <NavigationProperty Name="Query" Relationship="Self.FK_Answer_Query" FromRole="Answer" ToRole="Query" />
+    <NavigationProperty Name="Person2" Relationship="Self.FK_Answer_Updated_by" FromRole="Answer" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="Appointment_id" />
+    </Key>
+    <Property Name="Appointment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Professor_course_id" Type="Int32" Nullable="false" />
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Start_hour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="End_hour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Created_by" Type="Int32" />
+    <Property Name="Create_at" Type="DateTime" Precision="0" />
+    <Property Name="Updated_by" Type="Int32" />
+    <Property Name="Updated_at" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Appointme__Creat__5BE2A6F2" FromRole="Appointment" ToRole="Person" />
+    <NavigationProperty Name="Professor_Course" Relationship="Self.FK__Appointme__Profe__5DCAEF64" FromRole="Appointment" ToRole="Professor_Course" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Appointme__Stude__5EBF139D" FromRole="Appointment" ToRole="Student" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK__Appointme__Updat__5CD6CB2B" FromRole="Appointment" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Canton">
+    <Key>
+      <PropertyRef Name="Province_id" />
+      <PropertyRef Name="Canton_id" />
+    </Key>
+    <Property Name="Province_id" Type="Int32" Nullable="false" />
+    <Property Name="Canton_id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Province" Relationship="Self.FK__Canton__Province__25869641" FromRole="Canton" ToRole="Province" />
+    <NavigationProperty Name="Distric" Relationship="Self.FK__Distric__286302EC" FromRole="Canton" ToRole="Distric" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Course_id" />
+    </Key>
+    <Property Name="Course_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Credits" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Term" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Professor_Course" Relationship="Self.FK__Professor__Cours__5812160E" FromRole="Course" ToRole="Professor_Course" />
+    <NavigationProperty Name="Query" Relationship="Self.FK_Query_Course" FromRole="Course" ToRole="Query" />
+  </EntityType>
+  <EntityType Name="Distric">
+    <Key>
+      <PropertyRef Name="Province_id" />
+      <PropertyRef Name="Canton_id" />
+      <PropertyRef Name="Distric_id" />
+    </Key>
+    <Property Name="Province_id" Type="Int32" Nullable="false" />
+    <Property Name="Canton_id" Type="Int32" Nullable="false" />
+    <Property Name="Distric_id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Canton" Relationship="Self.FK__Distric__286302EC" FromRole="Distric" ToRole="Canton" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Distric" FromRole="Distric" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Office_Hours">
+    <Key>
+      <PropertyRef Name="Office_hours_id" />
+    </Key>
+    <Property Name="Office_hours_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Day" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Start_hour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="End_hour" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Professor_course_id" Type="Int32" />
+    <NavigationProperty Name="Professor_Course" Relationship="Self.FK_Professor_Course" FromRole="Office_Hours" ToRole="Professor_Course" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Person_id" />
+    </Key>
+    <Property Name="Person_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Interests" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Profile_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Distric_id" Type="Int32" />
+    <Property Name="Canton_id" Type="Int32" />
+    <Property Name="Province_id" Type="Int32" />
+    <Property Name="Created_by" Type="Int32" />
+    <Property Name="Create_at" Type="DateTime" Precision="0" />
+    <Property Name="Updated_by" Type="Int32" />
+    <Property Name="Updated_at" Type="DateTime" Precision="0" />
+    <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Created_by" FromRole="Person" ToRole="Answer" />
+    <NavigationProperty Name="Answer1" Relationship="Self.FK_Answer_Person" FromRole="Person" ToRole="Answer" />
+    <NavigationProperty Name="Answer2" Relationship="Self.FK_Answer_Updated_by" FromRole="Person" ToRole="Answer" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK__Appointme__Creat__5BE2A6F2" FromRole="Person" ToRole="Appointment" />
+    <NavigationProperty Name="Appointment1" Relationship="Self.FK__Appointme__Updat__5CD6CB2B" FromRole="Person" ToRole="Appointment" />
+    <NavigationProperty Name="Distric" Relationship="Self.FK_Distric" FromRole="Person" ToRole="Distric" />
+    <NavigationProperty Name="Professor_Course" Relationship="Self.FK__Professor__Creat__5629CD9C" FromRole="Person" ToRole="Professor_Course" />
+    <NavigationProperty Name="Professor_Course1" Relationship="Self.FK__Professor__Updat__571DF1D5" FromRole="Person" ToRole="Professor_Course" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK_Created_by" FromRole="Person" ToRole="Person1" />
+    <NavigationProperty Name="Person2" Relationship="Self.FK_Created_by" FromRole="Person1" ToRole="Person" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK_Professor_Person" FromRole="Person" ToRole="Professor" />
+    <NavigationProperty Name="Person_Social_Network" Relationship="Self.FK_PSN_Person" FromRole="Person" ToRole="Person_Social_Network" />
+    <NavigationProperty Name="Query" Relationship="Self.FK_Query_Created_by" FromRole="Person" ToRole="Query" />
+    <NavigationProperty Name="Query1" Relationship="Self.FK_Query_Person" FromRole="Person" ToRole="Query" />
+    <NavigationProperty Name="Query2" Relationship="Self.FK_Query_Updated_by" FromRole="Person" ToRole="Query" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Student_Person" FromRole="Person" ToRole="Student" />
+    <NavigationProperty Name="Person11" Relationship="Self.FK_Updated_by" FromRole="Person" ToRole="Person1" />
+    <NavigationProperty Name="Person3" Relationship="Self.FK_Updated_by" FromRole="Person1" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Person_Social_Network">
+    <Key>
+      <PropertyRef Name="Social_network_id" />
+      <PropertyRef Name="Person_id" />
+    </Key>
+    <Property Name="Social_network_id" Type="Int32" Nullable="false" />
+    <Property Name="Person_id" Type="Int32" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_PSN_Person" FromRole="Person_Social_Network" ToRole="Person" />
+    <NavigationProperty Name="Social_Network" Relationship="Self.FK_PSN_Soccial_Network" FromRole="Person_Social_Network" ToRole="Social_Network" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="Professor_id" />
+    </Key>
+    <Property Name="Professor_id" Type="Int32" Nullable="false" />
+    <Property Name="Especiality" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Is_admin" Type="Boolean" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Professor_Person" FromRole="Professor" ToRole="Person" />
+    <NavigationProperty Name="Professor_Course" Relationship="Self.FK__Professor__Profe__59063A47" FromRole="Professor" ToRole="Professor_Course" />
+  </EntityType>
+  <EntityType Name="Professor_Course">
+    <Key>
+      <PropertyRef Name="Professor_course_id" />
+    </Key>
+    <Property Name="Professor_course_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_id" Type="Int32" Nullable="false" />
+    <Property Name="Professor_id" Type="Int32" Nullable="false" />
+    <Property Name="Created_by" Type="Int32" />
+    <Property Name="Create_at" Type="DateTime" Precision="0" />
+    <Property Name="Updated_by" Type="Int32" />
+    <Property Name="Updated_at" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK__Appointme__Profe__5DCAEF64" FromRole="Professor_Course" ToRole="Appointment" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Professor__Cours__5812160E" FromRole="Professor_Course" ToRole="Course" />
+    <NavigationProperty Name="Office_Hours" Relationship="Self.FK_Professor_Course" FromRole="Professor_Course" ToRole="Office_Hours" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Professor__Creat__5629CD9C" FromRole="Professor_Course" ToRole="Person" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK__Professor__Updat__571DF1D5" FromRole="Professor_Course" ToRole="Person" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK__Professor__Profe__59063A47" FromRole="Professor_Course" ToRole="Professor" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Province_id" />
+    </Key>
+    <Property Name="Province_id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Canton" Relationship="Self.FK__Canton__Province__25869641" FromRole="Province" ToRole="Canton" />
+  </EntityType>
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="Query_id" />
+    </Key>
+    <Property Name="Query_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Query1" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Person_id" Type="Int32" />
+    <Property Name="Course_id" Type="Int32" />
+    <Property Name="Created_by" Type="Int32" />
+    <Property Name="Create_at" Type="DateTime" Precision="0" />
+    <Property Name="Updated_by" Type="Int32" />
+    <Property Name="Updated_at" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Query" FromRole="Query" ToRole="Answer" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Query_Course" FromRole="Query" ToRole="Course" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Query_Created_by" FromRole="Query" ToRole="Person" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK_Query_Person" FromRole="Query" ToRole="Person" />
+    <NavigationProperty Name="Person2" Relationship="Self.FK_Query_Updated_by" FromRole="Query" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Social_Network">
+    <Key>
+      <PropertyRef Name="Social_network_id" />
+    </Key>
+    <Property Name="Social_network_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Person_Social_Network" Relationship="Self.FK_PSN_Soccial_Network" FromRole="Social_Network" ToRole="Person_Social_Network" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="carne" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Is_President" Type="Boolean" />
+    <NavigationProperty Name="Appointment" Relationship="Self.FK__Appointme__Stude__5EBF139D" FromRole="Student" ToRole="Appointment" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_Student_Person" FromRole="Student" ToRole="Person" />
+  </EntityType>
+  <Association Name="FK_Answer_Created_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Query">
+    <End Role="Query" Type="Self.Query" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Query">
+        <PropertyRef Name="Query_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Query_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Updated_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Creat__5BE2A6F2">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Profe__5DCAEF64">
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor_Course">
+        <PropertyRef Name="Professor_course_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Professor_course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Stude__5EBF139D">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Student_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Updat__5CD6CB2B">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Canton__Province__25869641">
+    <End Role="Province" Type="Self.Province" Multiplicity="1" />
+    <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Province_id" />
+      </Principal>
+      <Dependent Role="Canton">
+        <PropertyRef Name="Province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Distric__286302EC">
+    <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+    <End Role="Distric" Type="Self.Distric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canton">
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Principal>
+      <Dependent Role="Distric">
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Cours__5812160E">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Distric">
+    <End Role="Distric" Type="Self.Distric" Multiplicity="0..1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distric">
+        <PropertyRef Name="Distric_id" />
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="Distric_id" />
+        <PropertyRef Name="Canton_id" />
+        <PropertyRef Name="Province_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Professor_Course">
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="0..1" />
+    <End Role="Office_Hours" Type="Self.Office_Hours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor_Course">
+        <PropertyRef Name="Professor_course_id" />
+      </Principal>
+      <Dependent Role="Office_Hours">
+        <PropertyRef Name="Professor_course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Creat__5629CD9C">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Updat__571DF1D5">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Created_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Person1" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Person1">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Professor_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="Professor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSN_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Person_Social_Network" Type="Self.Person_Social_Network" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Person_Social_Network">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Created_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Query_Updated_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Query" Type="Self.Query" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Query">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Person">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Updated_by">
+    <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+    <End Role="Person1" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Person_id" />
+      </Principal>
+      <Dependent Role="Person1">
+        <PropertyRef Name="Updated_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PSN_Soccial_Network">
+    <End Role="Social_Network" Type="Self.Social_Network" Multiplicity="1" />
+    <End Role="Person_Social_Network" Type="Self.Person_Social_Network" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Social_Network">
+        <PropertyRef Name="Social_network_id" />
+      </Principal>
+      <Dependent Role="Person_Social_Network">
+        <PropertyRef Name="Social_network_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__Profe__59063A47">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="Professor_Course" Type="Self.Professor_Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="Professor_id" />
+      </Principal>
+      <Dependent Role="Professor_Course">
+        <PropertyRef Name="Professor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answer" EntityType="Self.Answer" />
+    <EntitySet Name="Appointment" EntityType="Self.Appointment" />
+    <EntitySet Name="Canton" EntityType="Self.Canton" />
+    <EntitySet Name="Course" EntityType="Self.Course" />
+    <EntitySet Name="Distric" EntityType="Self.Distric" />
+    <EntitySet Name="Office_Hours" EntityType="Self.Office_Hours" />
+    <EntitySet Name="Person" EntityType="Self.Person" />
+    <EntitySet Name="Person_Social_Network" EntityType="Self.Person_Social_Network" />
+    <EntitySet Name="Professor" EntityType="Self.Professor" />
+    <EntitySet Name="Professor_Course" EntityType="Self.Professor_Course" />
+    <EntitySet Name="Province" EntityType="Self.Province" />
+    <EntitySet Name="Query" EntityType="Self.Query" />
+    <EntitySet Name="Social_Network" EntityType="Self.Social_Network" />
+    <EntitySet Name="Student" EntityType="Self.Student" />
+    <AssociationSet Name="FK_Answer_Created_by" Association="Self.FK_Answer_Created_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Person" Association="Self.FK_Answer_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Query" Association="Self.FK_Answer_Query">
+      <End Role="Query" EntitySet="Query" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Updated_by" Association="Self.FK_Answer_Updated_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Creat__5BE2A6F2" Association="Self.FK__Appointme__Creat__5BE2A6F2">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Profe__5DCAEF64" Association="Self.FK__Appointme__Profe__5DCAEF64">
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Stude__5EBF139D" Association="Self.FK__Appointme__Stude__5EBF139D">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Updat__5CD6CB2B" Association="Self.FK__Appointme__Updat__5CD6CB2B">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Appointment" EntitySet="Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Canton__Province__25869641" Association="Self.FK__Canton__Province__25869641">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Canton" EntitySet="Canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Distric__286302EC" Association="Self.FK__Distric__286302EC">
+      <End Role="Canton" EntitySet="Canton" />
+      <End Role="Distric" EntitySet="Distric" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Cours__5812160E" Association="Self.FK__Professor__Cours__5812160E">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Course" Association="Self.FK_Query_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Distric" Association="Self.FK_Distric">
+      <End Role="Distric" EntitySet="Distric" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Professor_Course" Association="Self.FK_Professor_Course">
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+      <End Role="Office_Hours" EntitySet="Office_Hours" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Creat__5629CD9C" Association="Self.FK__Professor__Creat__5629CD9C">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Updat__571DF1D5" Association="Self.FK__Professor__Updat__571DF1D5">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Created_by" Association="Self.FK_Created_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Person1" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Professor_Person" Association="Self.FK_Professor_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSN_Person" Association="Self.FK_PSN_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Person_Social_Network" EntitySet="Person_Social_Network" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Created_by" Association="Self.FK_Query_Created_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Person" Association="Self.FK_Query_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Query_Updated_by" Association="Self.FK_Query_Updated_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Query" EntitySet="Query" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Updated_by" Association="Self.FK_Updated_by">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Person1" EntitySet="Person" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PSN_Soccial_Network" Association="Self.FK_PSN_Soccial_Network">
+      <End Role="Social_Network" EntitySet="Social_Network" />
+      <End Role="Person_Social_Network" EntitySet="Person_Social_Network" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__Profe__59063A47" Association="Self.FK__Professor__Profe__59063A47">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="Professor_Course" EntitySet="Professor_Course" />
+    </AssociationSet>
+    <FunctionImport Name="Accept_Appointment">
+      <Parameter Name="Appointment_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Accept_Student_Account">
+      <Parameter Name="Student_id" Mode="In" Type="Int32" />
+      <Parameter Name="Update_by" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Create_Appointment">
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+      <Parameter Name="Student_id" Mode="In" Type="Int32" />
+      <Parameter Name="Start_hour" Mode="In" Type="String" />
+      <Parameter Name="End_hour" Mode="In" Type="String" />
+      <Parameter Name="Day" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Delete_Appointment">
+      <Parameter Name="Appointment_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Delete_Course">
+      <Parameter Name="Course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Delete_Office_Hours">
+      <Parameter Name="Office_hours_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeletePersonSocialNetwork">
+      <Parameter Name="Social_network_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteSocialNetwork">
+      <Parameter Name="Social_network_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Desactivate_Person_Account">
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Update_by" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_Professor_By_Id" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Professor_By_Id_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_Professors" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Professors_Result)" />
+    <FunctionImport Name="Get_Professors_Off" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Professors_Off_Result)" />
+    <FunctionImport Name="Get_Students" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Students_Result)" />
+    <FunctionImport Name="Get_Students_By_id" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Students_By_id_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_Students_Off" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Students_Off_Result)" />
+    <FunctionImport Name="Insert_Course">
+      <Parameter Name="Credits" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Term" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_Office_Hours">
+      <Parameter Name="Start_Hour" Mode="In" Type="String" />
+      <Parameter Name="End_Hour" Mode="In" Type="String" />
+      <Parameter Name="Day" Mode="In" Type="String" />
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertPersonSocialNetwork">
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Social_network_id" Mode="In" Type="Int32" />
+      <Parameter Name="URL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertSocialNetwork">
+      <Parameter Name="Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Promote_Professor">
+      <Parameter Name="Professor_id" Mode="In" Type="Int32" />
+      <Parameter Name="Update_by" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Promote_Student">
+      <Parameter Name="Student_id" Mode="In" Type="Int32" />
+      <Parameter Name="Update_by" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Reactivate_Person_Account">
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Update_by" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Refuse_Appointment">
+      <Parameter Name="Appointment_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_All_Accepted_Appointment" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_All_Accepted_Appointment_Result)">
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_All_Appointment" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_All_Appointment_Result)">
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_All_Course_From_Professor" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_All_Course_From_Professor_Result)">
+      <Parameter Name="Professor_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_All_Hold_Appointment" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_All_Hold_Appointment_Result)">
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_Course" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_Course_Result)" />
+    <FunctionImport Name="Select_Course_By_Id" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_Course_By_Id_Result)">
+      <Parameter Name="Course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_Office_Hours" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_Office_Hours_Result)" />
+    <FunctionImport Name="Select_Office_Hours_By_Course" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_Office_Hours_By_Course_Result)">
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_Office_Hours_By_Id" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_Office_Hours_By_Id_Result)">
+      <Parameter Name="Office_hours_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_Professors_By_Course" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Select_Professors_By_Course_Result)">
+      <Parameter Name="Course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectLogin" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.SelectLogin_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Update_Appointment">
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Start_hour" Mode="In" Type="String" />
+      <Parameter Name="End_hour" Mode="In" Type="String" />
+      <Parameter Name="Day" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Update_Course">
+      <Parameter Name="Course_id" Mode="In" Type="Int32" />
+      <Parameter Name="Credits" Mode="In" Type="Int32" />
+      <Parameter Name="Code" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Term" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Update_Office_Hours">
+      <Parameter Name="Office_hours_id" Mode="In" Type="Int32" />
+      <Parameter Name="Start_Hour" Mode="In" Type="String" />
+      <Parameter Name="End_Hour" Mode="In" Type="String" />
+      <Parameter Name="Day" Mode="In" Type="String" />
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_Update_Professor">
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Last_name" Mode="In" Type="String" />
+      <Parameter Name="Interests" Mode="In" Type="String" />
+      <Parameter Name="Profile_pic" Mode="In" Type="Binary" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Distric_id" Mode="In" Type="Int32" />
+      <Parameter Name="Canton_id" Mode="In" Type="Int32" />
+      <Parameter Name="Province_id" Mode="In" Type="Int32" />
+      <Parameter Name="Created_by" Mode="In" Type="Int32" />
+      <Parameter Name="Create_at" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated_by" Mode="In" Type="Int32" />
+      <Parameter Name="Updated_at" Mode="In" Type="DateTime" />
+      <Parameter Name="Role" Mode="In" Type="String" />
+      <Parameter Name="Especiality" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_Update_Student">
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Last_name" Mode="In" Type="String" />
+      <Parameter Name="Interests" Mode="In" Type="String" />
+      <Parameter Name="Profile_pic" Mode="In" Type="Binary" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Distric_id" Mode="In" Type="Int32" />
+      <Parameter Name="Canton_id" Mode="In" Type="Int32" />
+      <Parameter Name="Province_id" Mode="In" Type="Int32" />
+      <Parameter Name="Created_by" Mode="In" Type="Int32" />
+      <Parameter Name="Create_at" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated_by" Mode="In" Type="Int32" />
+      <Parameter Name="Updated_at" Mode="In" Type="DateTime" />
+      <Parameter Name="Role" Mode="In" Type="String" />
+      <Parameter Name="Carne" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SpInsert_Update_Professor">
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Last_name" Mode="In" Type="String" />
+      <Parameter Name="Interests" Mode="In" Type="String" />
+      <Parameter Name="Profile_pic" Mode="In" Type="Binary" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Distric_id" Mode="In" Type="Int32" />
+      <Parameter Name="Canton_id" Mode="In" Type="Int32" />
+      <Parameter Name="Province_id" Mode="In" Type="Int32" />
+      <Parameter Name="Created_by" Mode="In" Type="Int32" />
+      <Parameter Name="Create_at" Mode="In" Type="DateTime" />
+      <Parameter Name="Updated_by" Mode="In" Type="Int32" />
+      <Parameter Name="Updated_at" Mode="In" Type="DateTime" />
+      <Parameter Name="Role" Mode="In" Type="String" />
+      <Parameter Name="Especiality" Mode="In" Type="String" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Get_Canton_By_Province" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Canton_By_Province_Result)">
+      <Parameter Name="Province_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_District_By_Province_Canton" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_District_By_Province_Canton_Result)">
+      <Parameter Name="Province_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Canton_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Get_Province" ReturnType="Collection(Proyecto_Lenguajes_DMMSModel.Get_Province_Result)" />
+    <FunctionImport Name="Insert_Update_Professor_To_Course">
+      <Parameter Name="Professor_course_id" Mode="In" Type="Int32" />
+      <Parameter Name="Professor_id" Mode="In" Type="Int32" />
+      <Parameter Name="Course_id" Mode="In" Type="Int32" />
+      <Parameter Name="Created_by" Mode="In" Type="Int32" />
+      <Parameter Name="Updated_by" Mode="In" Type="Int32" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Get_Professor_By_Id_Result">
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Last_name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Interests" Nullable="true" MaxLength="200" />
+    <Property Type="Binary" Name="Profile_pic" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="Distric_id" Nullable="true" />
+    <Property Type="Int32" Name="Canton_id" Nullable="true" />
+    <Property Type="Int32" Name="Province_id" Nullable="true" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Professor_id" Nullable="true" />
+    <Property Type="String" Name="Especiality" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Is_admin" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Get_Professors_Result">
+    <Property Type="Int32" Name="Professor_id" Nullable="false" />
+    <Property Type="String" Name="Especiality" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Is_admin" Nullable="true" />
+    <Property Type="Int32" Name="Person_id" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Last_name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Interests" Nullable="true" MaxLength="200" />
+    <Property Type="Binary" Name="Profile_pic" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="Distric_id" Nullable="true" />
+    <Property Type="Int32" Name="Canton_id" Nullable="true" />
+    <Property Type="Int32" Name="Province_id" Nullable="true" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Get_Professors_Off_Result">
+    <Property Type="Int32" Name="Professor_id" Nullable="false" />
+    <Property Type="String" Name="Especiality" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Is_admin" Nullable="true" />
+    <Property Type="Int32" Name="Person_id" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="12" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Last_name" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Interests" Nullable="true" MaxLength="200" />
+    <Property Type="Binary" Name="Profile_pic" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="Distric_id" Nullable="true" />
+    <Property Type="Int32" Name="Canton_id" Nullable="true" />
+    <Property Type="Int32" Name="Province_id" Nullable="true" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Get_Students_Result">
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Last_name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Interests" Nullable="true" MaxLength="200" />
+    <Property Type="Binary" Name="Profile_pic" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="Distric_id" Nullable="true" />
+    <Property Type="Int32" Name="Canton_id" Nullable="true" />
+    <Property Type="Int32" Name="Province_id" Nullable="true" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Student_id" Nullable="true" />
+    <Property Type="Boolean" Name="Status1" Nullable="true" />
+    <Property Type="String" Name="carne" Nullable="true" MaxLength="12" />
+    <Property Type="Boolean" Name="Is_President" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Get_Students_By_id_Result">
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Last_name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Interests" Nullable="true" MaxLength="200" />
+    <Property Type="Binary" Name="Profile_pic" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="Distric_id" Nullable="true" />
+    <Property Type="Int32" Name="Canton_id" Nullable="true" />
+    <Property Type="Int32" Name="Province_id" Nullable="true" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Student_id" Nullable="true" />
+    <Property Type="Boolean" Name="Status1" Nullable="true" />
+    <Property Type="String" Name="carne" Nullable="true" MaxLength="12" />
+    <Property Type="Boolean" Name="Is_President" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Get_Students_Off_Result">
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="12" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Last_name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Interests" Nullable="true" MaxLength="200" />
+    <Property Type="Binary" Name="Profile_pic" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Int32" Name="Distric_id" Nullable="true" />
+    <Property Type="Int32" Name="Canton_id" Nullable="true" />
+    <Property Type="Int32" Name="Province_id" Nullable="true" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Student_id" Nullable="true" />
+    <Property Type="Boolean" Name="Status1" Nullable="true" />
+    <Property Type="String" Name="carne" Nullable="true" MaxLength="12" />
+    <Property Type="Boolean" Name="Is_President" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Select_All_Accepted_Appointment_Result">
+    <Property Type="Int32" Name="Appointment_id" Nullable="false" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="false" />
+    <Property Type="Int32" Name="Student_id" Nullable="false" />
+    <Property Type="String" Name="Start_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="End_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Select_All_Appointment_Result">
+    <Property Type="Int32" Name="Appointment_id" Nullable="false" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="false" />
+    <Property Type="Int32" Name="Student_id" Nullable="false" />
+    <Property Type="String" Name="Start_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="End_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Select_All_Course_From_Professor_Result">
+    <Property Type="Int32" Name="Professor_id" Nullable="false" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="true" />
+    <Property Type="Int32" Name="Course_id" Nullable="true" />
+    <Property Type="Int32" Name="Credits" Nullable="true" />
+    <Property Type="String" Name="Code" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Term" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Select_All_Hold_Appointment_Result">
+    <Property Type="Int32" Name="Appointment_id" Nullable="false" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="false" />
+    <Property Type="Int32" Name="Student_id" Nullable="false" />
+    <Property Type="String" Name="Start_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="End_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Created_by" Nullable="true" />
+    <Property Type="DateTime" Name="Create_at" Nullable="true" />
+    <Property Type="Int32" Name="Updated_by" Nullable="true" />
+    <Property Type="DateTime" Name="Updated_at" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="Select_Course_Result">
+    <Property Type="Int32" Name="Course_id" Nullable="false" />
+    <Property Type="Int32" Name="Credits" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Term" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Select_Course_By_Id_Result">
+    <Property Type="Int32" Name="Course_id" Nullable="false" />
+    <Property Type="Int32" Name="Credits" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Term" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Select_Office_Hours_Result">
+    <Property Type="Int32" Name="Office_hours_id" Nullable="false" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Start_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="End_hour" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Select_Office_Hours_By_Course_Result">
+    <Property Type="Int32" Name="Office_hours_id" Nullable="false" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Start_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="End_hour" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Select_Office_Hours_By_Id_Result">
+    <Property Type="Int32" Name="Office_hours_id" Nullable="false" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Start_hour" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="End_hour" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Select_Professors_By_Course_Result">
+    <Property Type="Int32" Name="Course_id" Nullable="false" />
+    <Property Type="Int32" Name="Professor_course_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Last_name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Interests" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Especiality" Nullable="true" MaxLength="200" />
+    <Property Type="Binary" Name="Profile_pic" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="SelectLogin_Result">
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="String" Name="Role" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Get_Canton_By_Province_Result">
+    <Property Type="Int32" Name="Province_id" Nullable="false" />
+    <Property Type="Int32" Name="Canton_id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="Province_id1" Nullable="false" />
+    <Property Type="String" Name="Name1" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Get_District_By_Province_Canton_Result">
+    <Property Type="Int32" Name="Province_id" Nullable="false" />
+    <Property Type="Int32" Name="Canton_id" Nullable="false" />
+    <Property Type="Int32" Name="Distric_id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="Get_Province_Result">
+    <Property Type="Int32" Name="Province_id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+  </ComplexType>
+</Schema>

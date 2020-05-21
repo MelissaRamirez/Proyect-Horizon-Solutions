@@ -1,0 +1,602 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- JQuery-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--JS-->
+    <script src="~/Scripts/Login.js"></script>
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Template CSS -->
+    @Styles.Render("~/Content/css")
+    <!-- Modernizr -->
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- NavBar Banner Header -->
+    <div class="main-wrap">
+        <!-- Navbar -->
+        <nav class="">
+            <div class="nav-links">
+                <a href="" class="link">Inicio</a>
+                <a href="" class="link">Profesores</a>
+                <a href="" class="link">Consultas</a>
+                <a href="" class="link">Cursos</a>
+                <a href="" class="link">Plan de estudio</a>
+            </div>
+        </nav>
+
+        <div class="content-main">
+
+            <!-- Banner header -->
+            <header class="header" id="head">
+                <div><img src="~/Images/ucr-white.png" id="brandLogo">  </div>
+                <div class="text-right">
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalRForm">
+                        Registrarse
+                    </a>
+                </div>
+
+                <div class="text-right">
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalLForm">
+                        Ingresar
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <div class="line line--1"></div>
+                    <div class="line line--2"></div>
+                    <div class="line line--3"></div>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <div class="content">
+                <div class="site-banner">
+                    <div class="overlay-bg"></div>
+                    <div class="header-title">
+                        <h1>Bienvenido<br> Queremos formarlo como profesional</h1>
+                    </div>
+                    <img src="~/Images/banner2.jpg" style="width:100%; height:100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    Login modals : professor student
+    -->
+    <!--Modal: Login Form-->
+    <div class="modal fade" id="modalLForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#panelLEstud" role="tab">
+                                <i class="fa fa-graduation-cap mr-1"></i>
+                                Iniciar sesión
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panels -->
+                    <div class="tab-content">
+                        <!--Panel  -->
+                        <div class="nav-link active" id="panelLEstud" role="tabpanel">
+                            <!--Body-->
+                            <div class="modal-body mb-1">
+                                <div class="md-form form-sm mb-7">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <label data-error="wrong" data-success="right">Correo</label>
+                                    <input id="Username" type="email" class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-4">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <label>Contrasena</label>
+                                    <input id="Password" type="password" class="form-control form-control-sm validate">
+
+                                </div>
+                                <div class="text-center mt-2">
+                                    <button onclick="login()" class="btn btn-info">Ingresar<i class="fa fa-sign-in ml-1"></i></button>
+                                </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                        <!--/.Panel login estudiantes-->
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: login Form-->
+    <!--
+    Register modals : professor student
+    -->
+    <!--Modal: Register Form-->
+    <div class="modal fade" id="modalRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#panelRProf" role="tab">
+                                <i class="fa fa-user mr-1"></i>
+                                Profesores
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#panelREstud" role="tab">
+                                <i class="fa fa-graduation-cap mr-1"></i>
+                                Estudiantes
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panels -->
+                    <div class="tab-content">
+                        <!--Panel Register Profesor-->
+                        <div class="tab-pane fade in show active" id="panelRProf" role="tabpanel">
+                            <!--Body-->
+                            <div class="modal-body mb-1">
+                                <div class="md-form form-sm mb-7">
+                                    <label>Correo</label>
+                                    <input type="email" class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-4">
+                                    <label>Contrasena</label>
+                                    <input type="password" class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label>Especialidad</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label data-error="wrong" data-success="right">Nombre</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label>Apellido</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label>Intereses</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+
+                                <div class="text-center mt-2">
+                                    <button class="btn btn-info">Registrarse <i class="fa fa-sign-in ml-1"></i></button>
+                                </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                        <!--/.Panel Register profesor-->
+                        <!--Panel Register estudiante-->
+                        <div class="tab-pane fade" id="panelREstud" role="tabpanel">
+                            <!--Body-->
+                            <div class="modal-body mb-1">
+                                <div class="md-form form-sm mb-7">
+                                    <label>Correo</label>
+                                    <input type="email" class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-4">
+                                    <label>Contrasena</label>
+                                    <input type="password" class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label>Carnet</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label data-error="wrong" data-success="right">Nombre</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label>Apellido</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+                                <div class="md-form form-sm mb-7">
+                                    <label>Intereses</label>
+                                    <input class="form-control form-control-sm validate">
+                                </div>
+
+
+                                <div class="text-center mt-2">
+                                    <button class="btn btn-info">Registrarse <i class="fa fa-sign-in ml-1"></i></button>
+                                </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                        <!--/.Panel Register estudiante-->
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: register Form-->
+    <!-- Professor ribbon -->
+    <div class="title-ribbon"><h1>Profesores</h1></div>
+
+    <!-- Professor card section -->
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-lg-4 col-md-6 col-8">
+                <div class="card">
+                    <img src="~/Images/profileMock.jpg" alt="John" style="width:100%">
+                    <h2>Andrea Miracova</h2>
+                    <p class="title">Programacion I</p>
+                    <div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-user">  Informacion</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-calendar">  Horarios</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-list">  Cursos impartidos</i></a></div>
+                    </div>
+                    <p><button style="background-color: #004972">Contactar</button></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-8">
+                <div class="card">
+                    <img src="~/Images/profileMock.jpg" alt="John" style="width:100%">
+                    <h2>Andrea Miracova</h2>
+                    <p class="title">Programacion I</p>
+                    <div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-user">  Informacion</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-calendar">  Horarios</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-list">  Cursos impartidos</i></a></div>
+                    </div>
+                    <p><button style="background-color: #004972">Contactar</button></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-8">
+                <div class="card">
+                    <img src="~/Images/profileMock.jpg" alt="John" style="width:100%">
+                    <h2>Andrea Miracova</h2>
+                    <p class="title">Programacion I</p>
+                    <div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-user">  Informacion</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-calendar">  Horarios</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-list">  Cursos impartidos</i></a></div>
+                    </div>
+                    <p><button style="background-color: #004972">Contactar</button></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-8">
+                <div class="card">
+                    <img src="~/Images/profileMock.jpg" alt="John" style="width:100%">
+                    <h2>Andrea Miracova</h2>
+                    <p class="title">Programacion I</p>
+                    <div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-user">  Informacion</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-calendar">  Horarios</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-list">  Cursos impartidos</i></a></div>
+                    </div>
+                    <p><button style="background-color: #004972">Contactar</button></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-8">
+                <div class="card">
+                    <img src="~/Images/profileMock.jpg" alt="John" style="width:100%">
+                    <h2>Andrea Miracova</h2>
+                    <p class="title">Programacion I</p>
+                    <div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-user">  Informacion</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-calendar">  Horarios</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-list">  Cursos impartidos</i></a></div>
+                    </div>
+                    <p><button style="background-color: #004972">Contactar</button></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-8">
+                <div class="card">
+                    <img src="~/Images/profileMock.jpg" alt="John" style="width:100%">
+                    <h2>Andrea Miracova</h2>
+                    <p class="title">Programacion I</p>
+                    <div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-user">  Informacion</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-calendar">  Horarios</i></a></div>
+                        <div class="prof-item"><a href="#"><i class="fa fa-list">  Cursos impartidos</i></a></div>
+                    </div>
+                    <p><button style="background-color: #004972">Contactar</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Professor card section -->
+    <!-- Course ribbon -->
+    <div class="title-ribbon"><h1>Cursos</h1></div>
+
+    <div class="row align-items-start">
+        <div class="col-lg-6 col-md-6 col-8">
+            <div class="card link-template-tabcard" style="width:600px;margin: 20px auto;">
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    <h3 class="package-title" style="max-width: 60%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 14px;margin-top: 10px">Package Title</h3>
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" data-target="#desc" href="#desc">Description</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" data-target="#info" href="#info">Package Info</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-0">
+                    <div class="tab-content">
+                        <div class="tab-pane p-4 active" id="desc" role="tabpanel">
+                            <div id="tab-content">
+                                <div id="desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="info" role="tabpanel">
+                            <ul class="list-group list-group-flush ml-0 mb-2">
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:version]">
+                                    Version
+                                    <span class="badge">1.7.0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:download_count]">
+                                    Download
+                                    <span class="badge">10237</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_size]">
+                                    File Size
+                                    <span class="badge">19.09 KB</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_count]">
+                                    File Count
+                                    <span class="badge">1</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:create_date]">
+                                    Create Date
+                                    <span class="badge">December 24, 2013</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:update_date]">
+                                    Last Updated
+                                    <span class="badge">December 16, 2019</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                    <b></b>
+                    <a href="https://www.wpdownloadmanager.com/" target=_blank class="wpdm-download-link wpdm-download-locked btn btn-info " data-package="30">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-8">
+            <div class="card link-template-tabcard" style="width:600px;margin: 20px auto;">
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    <h3 class="package-title" style="max-width: 60%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 14px;margin-top: 10px">Package Title</h3>
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" data-target="#desc" href="#desc">Description</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" data-target="#info" href="#info">Package Info</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-0">
+                    <div class="tab-content">
+                        <div class="tab-pane p-4 active" id="desc" role="tabpanel">
+                            <div id="tab-content">
+                                <div id="desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="info" role="tabpanel">
+                            <ul class="list-group list-group-flush ml-0 mb-2">
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:version]">
+                                    Version
+                                    <span class="badge">1.7.0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:download_count]">
+                                    Download
+                                    <span class="badge">10237</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_size]">
+                                    File Size
+                                    <span class="badge">19.09 KB</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_count]">
+                                    File Count
+                                    <span class="badge">1</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:create_date]">
+                                    Create Date
+                                    <span class="badge">December 24, 2013</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:update_date]">
+                                    Last Updated
+                                    <span class="badge">December 16, 2019</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                    <b></b>
+                    <a href="https://www.wpdownloadmanager.com/" target=_blank class="wpdm-download-link wpdm-download-locked btn btn-info " data-package="30">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-8">
+            <div class="card link-template-tabcard" style="width:600px;margin: 20px auto;">
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    <h3 class="package-title" style="max-width: 60%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 14px;margin-top: 10px">Package Title</h3>
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" data-target="#desc" href="#desc">Description</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" data-target="#info" href="#info">Package Info</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-0">
+                    <div class="tab-content">
+                        <div class="tab-pane p-4 active" id="desc" role="tabpanel">
+                            <div id="tab-content">
+                                <div id="desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="info" role="tabpanel">
+                            <ul class="list-group list-group-flush ml-0 mb-2">
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:version]">
+                                    Version
+                                    <span class="badge">1.7.0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:download_count]">
+                                    Download
+                                    <span class="badge">10237</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_size]">
+                                    File Size
+                                    <span class="badge">19.09 KB</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_count]">
+                                    File Count
+                                    <span class="badge">1</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:create_date]">
+                                    Create Date
+                                    <span class="badge">December 24, 2013</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:update_date]">
+                                    Last Updated
+                                    <span class="badge">December 16, 2019</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                    <b></b>
+                    <a href="https://www.wpdownloadmanager.com/" target=_blank class="wpdm-download-link wpdm-download-locked btn btn-info " data-package="30">Download</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-8">
+            <div class="card link-template-tabcard" style="width:600px;margin: 20px auto;">
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    <h3 class="package-title" style="max-width: 60%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 14px;margin-top: 10px">Package Title</h3>
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" data-target="#desc" href="#desc">Description</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" data-target="#info" href="#info">Package Info</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-0">
+                    <div class="tab-content">
+                        <div class="tab-pane p-4 active" id="desc" role="tabpanel">
+                            <div id="tab-content">
+                                <div id="desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="info" role="tabpanel">
+                            <ul class="list-group list-group-flush ml-0 mb-2">
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:version]">
+                                    Version
+                                    <span class="badge">1.7.0</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:download_count]">
+                                    Download
+                                    <span class="badge">10237</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_size]">
+                                    File Size
+                                    <span class="badge">19.09 KB</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:file_count]">
+                                    File Count
+                                    <span class="badge">1</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:create_date]">
+                                    Create Date
+                                    <span class="badge">December 24, 2013</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center [hide_empty:update_date]">
+                                    Last Updated
+                                    <span class="badge">December 16, 2019</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                    <b></b>
+                    <a href="https://www.wpdownloadmanager.com/" target=_blank class="wpdm-download-link wpdm-download-locked btn btn-info " data-package="30">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+
+    <!-- Scripts -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>

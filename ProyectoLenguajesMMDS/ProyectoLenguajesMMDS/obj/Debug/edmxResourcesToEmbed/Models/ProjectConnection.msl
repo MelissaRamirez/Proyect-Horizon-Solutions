@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Proyecto_Lenguajes_DMMSModelStoreContainer" CdmEntityContainer="Proyecto_Lenguajes_DMMSEntities">
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="Answer_id" ColumnName="Answer_id" />
+          <ScalarProperty Name="Query_id" ColumnName="Query_id" />
+          <ScalarProperty Name="Answer1" ColumnName="Answer" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="Appointment_id" ColumnName="Appointment_id" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cantons">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Canton">
+        <MappingFragment StoreEntitySet="Canton">
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Credits" ColumnName="Credits" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districs">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Distric">
+        <MappingFragment StoreEntitySet="Distric">
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Office_Hours">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Office_Hours">
+        <MappingFragment StoreEntitySet="Office_Hours">
+          <ScalarProperty Name="Office_hours_id" ColumnName="Office_hours_id" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Person_Social_Network">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Person_Social_Network">
+        <MappingFragment StoreEntitySet="Person_Social_Network">
+          <ScalarProperty Name="Social_network_id" ColumnName="Social_network_id" />
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professors">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Professor">
+        <MappingFragment StoreEntitySet="Professor">
+          <ScalarProperty Name="Professor_id" ColumnName="Professor_id" />
+          <ScalarProperty Name="Especiality" ColumnName="Especiality" />
+          <ScalarProperty Name="Is_admin" ColumnName="Is_admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professor_Course">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Professor_Course">
+        <MappingFragment StoreEntitySet="Professor_Course">
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Professor_id" ColumnName="Professor_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Queries">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Query">
+        <MappingFragment StoreEntitySet="Query">
+          <ScalarProperty Name="Query_id" ColumnName="Query_id" />
+          <ScalarProperty Name="Query1" ColumnName="Query" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Social_Network">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Social_Network">
+        <MappingFragment StoreEntitySet="Social_Network">
+          <ScalarProperty Name="Social_network_id" ColumnName="Social_network_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="carne" ColumnName="carne" />
+          <ScalarProperty Name="Is_President" ColumnName="Is_President" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Accept_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Accept_Appointment" />
+    <FunctionImportMapping FunctionImportName="Accept_Student_Account" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Accept_Student_Account" />
+    <FunctionImportMapping FunctionImportName="Create_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Create_Appointment" />
+    <FunctionImportMapping FunctionImportName="Delete_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Delete_Appointment" />
+    <FunctionImportMapping FunctionImportName="Delete_Course" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Delete_Course" />
+    <FunctionImportMapping FunctionImportName="Delete_Office_Hours" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Delete_Office_Hours" />
+    <FunctionImportMapping FunctionImportName="DeletePersonSocialNetwork" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.DeletePersonSocialNetwork" />
+    <FunctionImportMapping FunctionImportName="DeleteSocialNetwork" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.DeleteSocialNetwork" />
+    <FunctionImportMapping FunctionImportName="Desactivate_Person_Account" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Desactivate_Person_Account" />
+    <FunctionImportMapping FunctionImportName="Get_Professor_By_Id" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Get_Professor_By_Id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Get_Professor_By_Id_Result">
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Professor_id" ColumnName="Professor_id" />
+          <ScalarProperty Name="Especiality" ColumnName="Especiality" />
+          <ScalarProperty Name="Is_admin" ColumnName="Is_admin" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Professors" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Get_Professors">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Get_Professors_Result">
+          <ScalarProperty Name="Professor_id" ColumnName="Professor_id" />
+          <ScalarProperty Name="Especiality" ColumnName="Especiality" />
+          <ScalarProperty Name="Is_admin" ColumnName="Is_admin" />
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Professors_Off" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Get_Professors_Off">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Get_Professors_Off_Result">
+          <ScalarProperty Name="Professor_id" ColumnName="Professor_id" />
+          <ScalarProperty Name="Especiality" ColumnName="Especiality" />
+          <ScalarProperty Name="Is_admin" ColumnName="Is_admin" />
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Students" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Get_Students">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Get_Students_Result">
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+          <ScalarProperty Name="carne" ColumnName="carne" />
+          <ScalarProperty Name="Is_President" ColumnName="Is_President" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Students_By_id" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Get_Students_By_id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Get_Students_By_id_Result">
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+          <ScalarProperty Name="carne" ColumnName="carne" />
+          <ScalarProperty Name="Is_President" ColumnName="Is_President" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Students_Off" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Get_Students_Off">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Get_Students_Off_Result">
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Distric_id" ColumnName="Distric_id" />
+          <ScalarProperty Name="Canton_id" ColumnName="Canton_id" />
+          <ScalarProperty Name="Province_id" ColumnName="Province_id" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Status1" ColumnName="Status1" />
+          <ScalarProperty Name="carne" ColumnName="carne" />
+          <ScalarProperty Name="Is_President" ColumnName="Is_President" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Insert_Course" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Insert_Course" />
+    <FunctionImportMapping FunctionImportName="Insert_Office_Hours" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Insert_Office_Hours" />
+    <FunctionImportMapping FunctionImportName="InsertPersonSocialNetwork" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.InsertPersonSocialNetwork" />
+    <FunctionImportMapping FunctionImportName="InsertSocialNetwork" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.InsertSocialNetwork" />
+    <FunctionImportMapping FunctionImportName="Promote_Professor" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Promote_Professor" />
+    <FunctionImportMapping FunctionImportName="Promote_Student" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Promote_Student" />
+    <FunctionImportMapping FunctionImportName="Reactivate_Person_Account" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Reactivate_Person_Account" />
+    <FunctionImportMapping FunctionImportName="Refuse_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Refuse_Appointment" />
+    <FunctionImportMapping FunctionImportName="Select_All_Accepted_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_All_Accepted_Appointment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_All_Accepted_Appointment_Result">
+          <ScalarProperty Name="Appointment_id" ColumnName="Appointment_id" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_All_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_All_Appointment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_All_Appointment_Result">
+          <ScalarProperty Name="Appointment_id" ColumnName="Appointment_id" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_All_Course_From_Professor" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_All_Course_From_Professor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_All_Course_From_Professor_Result">
+          <ScalarProperty Name="Professor_id" ColumnName="Professor_id" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Credits" ColumnName="Credits" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_All_Hold_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_All_Hold_Appointment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_All_Hold_Appointment_Result">
+          <ScalarProperty Name="Appointment_id" ColumnName="Appointment_id" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Create_at" ColumnName="Create_at" />
+          <ScalarProperty Name="Updated_by" ColumnName="Updated_by" />
+          <ScalarProperty Name="Updated_at" ColumnName="Updated_at" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_Course" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_Course">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_Course_Result">
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Credits" ColumnName="Credits" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_Course_By_Id" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_Course_By_Id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_Course_By_Id_Result">
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Credits" ColumnName="Credits" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_Office_Hours" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_Office_Hours">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_Office_Hours_Result">
+          <ScalarProperty Name="Office_hours_id" ColumnName="Office_hours_id" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_Office_Hours_By_Course" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_Office_Hours_By_Course">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_Office_Hours_By_Course_Result">
+          <ScalarProperty Name="Office_hours_id" ColumnName="Office_hours_id" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_Office_Hours_By_Id" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_Office_Hours_By_Id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_Office_Hours_By_Id_Result">
+          <ScalarProperty Name="Office_hours_id" ColumnName="Office_hours_id" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Start_hour" ColumnName="Start_hour" />
+          <ScalarProperty Name="End_hour" ColumnName="End_hour" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Select_Professors_By_Course" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Select_Professors_By_Course">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.Select_Professors_By_Course_Result">
+          <ScalarProperty Name="Course_id" ColumnName="Course_id" />
+          <ScalarProperty Name="Professor_course_id" ColumnName="Professor_course_id" />
+          <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Interests" ColumnName="Interests" />
+          <ScalarProperty Name="Especiality" ColumnName="Especiality" />
+          <ScalarProperty Name="Profile_pic" ColumnName="Profile_pic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectLogin" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.SelectLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.SelectLogin_Result">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Update_Appointment" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Update_Appointment" />
+    <FunctionImportMapping FunctionImportName="Update_Course" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Update_Course" />
+    <FunctionImportMapping FunctionImportName="Update_Office_Hours" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.Update_Office_Hours" />
+    <FunctionImportMapping FunctionImportName="SPLogin" FunctionName="Proyecto_Lenguajes_DMMSModel.Store.SelectLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Proyecto_Lenguajes_DMMSModel.SelectLogin_Result">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
